@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Surya Website</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:black;
+color:white;
+}
+
+/* background bintang */
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+background:url("https://www.transparenttextures.com/patterns/stardust.png");
+animation:starsMove 120s linear infinite;
+z-index:-1;
+}
+
+@keyframes starsMove{
+from{background-position:0 0;}
+to{background-position:0 2000px;}
+}
+
+/* navbar */
+nav{
+display:flex;
+justify-content:space-between;
+padding:20px 40px;
+background:rgba(0,0,0,0.6);
+}
+
+nav h2{
+color:#00ffd5;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:25px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+}
+
+/* hero */
+.hero{
+height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+/* foto profil */
+.profile{
+width:180px;
+height:180px;
+border-radius:50%;
+border:4px solid #00ffd5;
+margin-bottom:20px;
+object-fit:cover;
+
+animation:spin 20s linear infinite;
+
+box-shadow:
+0 0 10px #00ffd5,
+0 0 20px #00ffd5,
+0 0 40px #00ffd5,
+0 0 80px #00ffd5;
+}
+
+@keyframes spin{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+
+.hero h1{
+font-size:60px;
+color:#00ffd5;
+margin-bottom:20px;
+}
+
+/* tombol */
+.btn{
+padding:12px 25px;
+background:#00ffd5;
+color:black;
+text-decoration:none;
+border-radius:8px;
+font-weight:bold;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.1);
+}
+
+/* karakter anime */
+.anime{
+position:fixed;
+bottom:30px;
+right:30px;
+width:220px;
+animation:float 4s ease-in-out infinite;
+transition:transform 0.2s;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-20px);}
+100%{transform:translateY(0);}
+}
+
+/* section */
+.section{
+padding:80px;
+text-align:center;
+background:#111;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<!-- karakter anime -->
+<img id="anime" class="anime" src="https://pngimg.com/uploads/anime/anime_PNG32.png">
+
+<!-- navbar -->
+<nav>
+
+<h2>Surya</h2>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+
+</nav>
+
+<!-- hero -->
+<div class="hero">
+
+<img src="foto.jpg" class="profile">
+
+<h1 id="typing"></h1>
+
+<a href="#" class="btn">Lihat Profil</a>
+
+</div>
+
+<!-- musik -->
+<div style="text-align:center;margin-bottom:20px;">
+<audio controls loop>
+<source src="musik.mp3" type="audio/mpeg">
+</audio>
+</div>
+
+<div class="section">
+
+<h2>Tentang Gua</h2>
+
+<p>Lagi belajar coding sama buat website.</p>
+
+<br>
+
+<p>Instagram: @suyeay._</p>
+<p>WhatsApp: 085716718730</p>
+
+</div>
+
+<script>
+
+/* teks mengetik */
+
+let text = "Hewloo!! Gua Surya ヾ(^▽^*)))";
+let i = 0;
+
+function typing(){
+if(i < text.length){
+document.getElementById("typing").innerHTML += text.charAt(i);
+i++;
+setTimeout(typing,100);
+}
+}
+
+typing();
+
+/* karakter mengikuti mouse */
+
+document.addEventListener("mousemove",function(e){
+
+let anime = document.getElementById("anime");
+
+let x = e.clientX / 50;
+let y = e.clientY / 50;
+
+anime.style.transform = "translate(" + x + "px," + y + "px)";
+});
+
+</script>
+
+</body>
+</html>
